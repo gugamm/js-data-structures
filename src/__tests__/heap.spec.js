@@ -18,8 +18,8 @@ describe('MinHeap()', () => {
   })
 
   it('Should pop elements correctly', () => {
-    const descendingElements = [20,15,10,5,0]
-    const expectedPopOrder = [0,5,10,15,20]
+    const descendingElements = [0,3,2,5]
+    const expectedPopOrder = [0,2,3,5]
     const minHeap = new Heap()
     descendingElements.forEach(element => minHeap.push(element))
     

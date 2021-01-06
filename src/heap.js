@@ -31,25 +31,32 @@ class Heap {
   }
 
   pop() {
-    if (this._heap.length - 1 === 0) {
+    if (this._heap.length === 1) {
       return null
     }
 
     const popVal = this._heap.pop()
 
-    if (this._heap.length - 1 === 0) {
+    if (this._heap.length  === 1) {
       return popVal
     }
 
     const topVal = this._heap[1]
     this._heap[1] = popVal
 
+    if (this._heap.length === 2) {
+      return topVal
+    }
+
     let currentIndex = 1
     let leftChildIndex = currentIndex * 2
     let rightChildIndex = currentIndex * 2 + 1
 
     while (this._heap[leftChildIndex] !== undefined && this._heap[rightChildIndex] !== undefined && (this._comparator(this._heap[leftChildIndex], this._heap[currentIndex]) < 0 || this._comparator(this._heap[rightChildIndex], this._heap[currentIndex]) < 0)) {
-      if (this._comparator(this._heap[leftChildIndex], this._heap[currentIndex]) < 0) {
+      const rightComp = this._comparator(this._heap[rightChildIndex], this._heap[currentIndex])
+      const leftComp = this._comparator(this._heap[leftChildIndex], this._heap[currentIndex])
+
+      if (leftComp < 0 && leftComp <= rightComp) {
         const tmp = this._heap[leftChildIndex]
         this._heap[leftChildIndex] = this._heap[currentIndex]
         this._heap[currentIndex] = tmp
