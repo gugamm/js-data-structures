@@ -1,15 +1,15 @@
-const defaultComparator = (a, b) => {
-  return a - b
-}
-
 class Heap {
-  constructor (comparator = defaultComparator) {
+  constructor (comparator = null) {
     this._heap = [null]
-    this._comparator = comparator
+    this._comparator = comparator || this._defaultComparator
   }
 
   get size() {
     return this._heap.length - 1
+  }
+
+  _defaultComparator(a, b) {
+    return a - b
   }
 
   peek() {
