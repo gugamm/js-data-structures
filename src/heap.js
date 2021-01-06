@@ -72,7 +72,7 @@ class Heap {
       rightChildIndex = currentIndex * 2 + 1
     }
 
-    if (this._heap[rightChildIndex] === undefined && this._comparator(this._heap[leftChildIndex], this._heap[currentIndex]) < 0) {
+    if (this._heap[rightChildIndex] === undefined && this._heap[leftChildIndex] !== undefined && this._comparator(this._heap[leftChildIndex], this._heap[currentIndex]) < 0) {
       const tmp = this._heap[leftChildIndex]
       this._heap[leftChildIndex] = this._heap[currentIndex]
       this._heap[currentIndex] = tmp
