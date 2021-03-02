@@ -87,6 +87,22 @@ class Deque {
       currentElem = currentElem.next
     }
   }
+
+  toArray() {
+    if (this._start === null) {
+      return []
+    }
+
+    let current = this._start
+    let index = 0
+    const result = Array(this._size)
+    while (current) {
+      result[index] = current.val
+      current = current.next
+      index++
+    }
+    return result
+  }
 }
 
 class Node {
